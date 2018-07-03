@@ -1,17 +1,17 @@
 const databaseHandler = Object.create({}, {
-    postFriend: {
-        value: (newFriendObject) => {
+    postUser: {
+        value: (newUserObject) => {
             return $.ajax({
-                url: "http://localhost:3000/friends",
+                url: "http://localhost:3000/users",
                 method: "POST",
-                data: newFriendObject
+                data: newUserObject
             })
         }
     },
-    deleteFriend: {
+    deleteUser: {
         value: (id) => {
             return $.ajax({
-                url: `http://localhost:3000/friends/${id}`,
+                url: `http://localhost:3000/users/${id}`,
                 method: "DELETE",
             })
         }
