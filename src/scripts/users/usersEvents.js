@@ -1,21 +1,21 @@
 const databaseHandler = require("./databaseHandler");
 
-const Printer = require("./friendPrinter");
+const Printer = require("./userPrinter");
 
 
 
 $("#form-container").on("click", "#submit-btn", () => {
     const nameInput = $("#name-input").val();
     console.log(nameInput);
-    const newfriend = {
+    const newUser = {
         name: nameInput,
 
     }
-    databaseHandler.postFriend(newfriend)
+    databaseHandler.postUser(newUser)
         .then(() => {
             return DatabaseHandler.getAllTasks()
         })
-        .then(friendArray => {
-            Printer.printTodos(friendArray)
+        .then(userArray => {
+            Printer.printTodos(userArray)
         })
 })
