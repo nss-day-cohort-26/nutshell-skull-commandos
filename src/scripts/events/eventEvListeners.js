@@ -1,19 +1,18 @@
 const eventDatabaseHandler = require("./eventDatabaseHandler");
-
 const eventsPrinter = require("./eventPrinter");
 
 $("#eventForm-container").on("click", "#submit-btn", () => {
-    const eventInput = $("#name-input").val();
-    console.log(eventInput);
+    const eventNameInput = $("#eventName-input").val();
+    const eventDateInput = $("#eventDate-input").val();
     const newEvent = {
-        name: eventInput,
-
+        name: eventNameInput,
+        date: eventDateInput
     }
     eventDatabaseHandler.postEvent(newEvent)
         .then(() => {
-            return eventDatabaseHandler.getMyEvents()
+            return eventDatabaseHandler.getAllEvents()
         })
         .then(eventArray => {
-            Printer.printMyEvents(eventArray)
+            eventsPrinter.printEvents(eventArray)
         })
 })

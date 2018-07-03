@@ -1,4 +1,4 @@
-const eventsDatabase = Object.create({}, {
+const eventDatabaseHandler = Object.create({}, {
     postEvent: {
         value: (newEventObject) => {
             return $.ajax({
@@ -8,6 +8,13 @@ const eventsDatabase = Object.create({}, {
             })
         }
     },
+
+    getAllEvents: {
+        value: () => {
+            return $.ajax("http://localhost:3000/events")
+        }
+    },
+
     deleteEvent: {
         value: (id) => {
             return $.ajax({
@@ -17,4 +24,4 @@ const eventsDatabase = Object.create({}, {
         }
     }
 })
-module.exports = eventsDatabase;
+module.exports = eventDatabaseHandler;
