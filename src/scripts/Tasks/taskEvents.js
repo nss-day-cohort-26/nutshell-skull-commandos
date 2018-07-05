@@ -17,8 +17,8 @@ $("#taskForm-container").on("click", "#submit-btn", () => {
     taskDatabaseHandler.postTask(newTask)
     .then((taskInfo) => {
       console.log("taskInfo",taskInfo)
-      $("#taskName-input").val(" ")
-      $("#taskDetails-input").val(" ")
+      $("#taskName-input").val("").attr("placeholder","Task Name")
+      $("#taskDetails-input").val("").attr("placeholder","Details")
       // console.log("task name", $("#taskName-input"))
       return taskDatabaseHandler.getAllTasks()
     })
