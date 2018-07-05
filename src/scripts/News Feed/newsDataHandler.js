@@ -1,5 +1,5 @@
 const newsData = Object.create({}, {
-    postTask: {
+    postNews: {
         value: (newTaskObject) => {
             return $.ajax({
                 url: "http://localhost:3000/news",
@@ -8,12 +8,12 @@ const newsData = Object.create({}, {
             })
         }
     },
-    getAllTasks: {
+    getAllNews: {
         value: () => {
             return $.ajax("http://localhost:3000/news")
         }
     },
-    deleteTask: {
+    deleteNews: {
         value: (id) => {
             return $.ajax({
                 url: `http://localhost:3000/news/${id}`,
