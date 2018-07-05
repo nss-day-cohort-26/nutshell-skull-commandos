@@ -18,6 +18,12 @@ $("#form-container").on("click", "#submit-btn", () => {
             return DatabaseHandler.getAllUsers(userInfo.id)
         })
         .then(userArray => {
-            Printer.printTodos(userArray)
+            Printer.printUsers(userArray)
         })
 })
+
+let getUserID = () => {
+    return userID
+}
+
+module.exports = getUserID;
