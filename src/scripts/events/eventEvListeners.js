@@ -1,5 +1,6 @@
 const eventDatabaseHandler = require("./eventDatabaseHandler");
 const eventsPrinter = require("./eventPrinter");
+const userData = require("../users/usersEvents");
 
 $("#eventForm-container").on("click", "#submit-btn", () => {
     const eventNameInput = $("#eventName-input").val();
@@ -8,10 +9,15 @@ $("#eventForm-container").on("click", "#submit-btn", () => {
     const newEvent = {
         name: eventNameInput,
         date: eventDateInput,
-        location: eventLocationInput
+        location: eventLocationInput,
+        userID: userData()
     }
     eventDatabaseHandler.postEvent(newEvent)
-        .then(() => {
+        .then((eventInfo) => {
+            console.log("event Info", eventInfo)
+            $("#eventName-input").val("").attr("placeholder","Event Name")
+            $("#eventDate-input").val("").attr("placeholder","Date")
+            $("#eventLocation-input").val("").attr("placeholder","Location")
             return eventDatabaseHandler.getAllEvents()
         })
         .then(eventArray => {
