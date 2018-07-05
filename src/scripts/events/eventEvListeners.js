@@ -1,6 +1,6 @@
 const eventDatabaseHandler = require("./eventDatabaseHandler");
 const eventsPrinter = require("./eventPrinter");
-
+// submit button event listener
 $("#eventForm-container").on("click", "#submit-btn", () => {
     const eventNameInput = $("#eventName-input").val();
     const eventDateInput = $("#eventDate-input").val();
@@ -12,9 +12,23 @@ $("#eventForm-container").on("click", "#submit-btn", () => {
     }
     eventDatabaseHandler.postEvent(newEvent)
         .then(() => {
+            $("#eventName-input").val("").attr("placeholder", "Event")
+            $("#eventDate-input").val("").attr("placeholder", "Event Date")
+            $("#eventLocation-input").val("").attr("placeholder", "Event Location")
             return eventDatabaseHandler.getAllEvents()
         })
         .then(eventArray => {
             eventsPrinter.printEvents(eventArray)
         })
+})
+// delete button event listener
+$("#event-container").on("click", ".delete-btn", () => {
+    const eventID = $(event.target).parent().attr("id")
+    eventDatabaseHandler.deleteEvent(eventID)
+    .then(() => {
+        return eventDatabaseHandler.getAllEvents()
+    })
+    .then((eventArray) => {
+        eventsPrinter.printEvents(eventArray)
+    })
 })
