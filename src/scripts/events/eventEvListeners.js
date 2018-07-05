@@ -4,9 +4,11 @@ const eventsPrinter = require("./eventPrinter");
 $("#eventForm-container").on("click", "#submit-btn", () => {
     const eventNameInput = $("#eventName-input").val();
     const eventDateInput = $("#eventDate-input").val();
+    const eventLocation = $("#eventLocation-input").val();
     const newEvent = {
         name: eventNameInput,
-        date: eventDateInput
+        date: eventDateInput,
+        location: eventLocationInput
     }
     eventDatabaseHandler.postEvent(newEvent)
         .then(() => {

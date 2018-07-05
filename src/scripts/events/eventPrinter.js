@@ -6,6 +6,7 @@ const eventsPrinter = Object.create({}, {
                 const $eventDiv = $("<div>").attr("id", event.id)
                 $("<h4>").text(event.name).appendTo($eventDiv);
                 $("<p>").text(event.date).appendTo($eventDiv);
+                $("<p>").text(event.location).appendTo($eventDiv);
                 $("<button>").text("Delete").addClass("delete-btn").appendTo($eventDiv);
                 $($eventDiv).appendTo("#event-container");
             })
