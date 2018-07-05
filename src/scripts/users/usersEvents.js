@@ -2,7 +2,7 @@ const databaseHandler = require("./databaseHandler");
 
 const Printer = require("./userPrinter");
 
-
+let userID = "";
 
 $("#form-container").on("click", "#submit-btn", () => {
     const nameInput = $("#name-input").val();
@@ -12,8 +12,10 @@ $("#form-container").on("click", "#submit-btn", () => {
 
     }
     databaseHandler.postUser(newUser)
-        .then(() => {
-            return DatabaseHandler.getAllTasks()
+        .then((userInfo) => {
+            userID = userInfo.id
+            console.log(userInfo)
+            return DatabaseHandler.getAllUsers(userInfo.id)
         })
         .then(userArray => {
             Printer.printTodos(userArray)
