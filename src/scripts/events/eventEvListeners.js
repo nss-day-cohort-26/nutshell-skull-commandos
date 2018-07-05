@@ -12,6 +12,9 @@ $("#eventForm-container").on("click", "#submit-btn", () => {
     }
     eventDatabaseHandler.postEvent(newEvent)
         .then(() => {
+            $("#eventName-input").val("").attr("placeholder", "Event")
+            $("#eventDate-input").val("").attr("placeholder", "Event Date")
+            $("#eventLocation-input").val("").attr("placeholder", "Event Location")
             return eventDatabaseHandler.getAllEvents()
         })
         .then(eventArray => {
@@ -19,7 +22,7 @@ $("#eventForm-container").on("click", "#submit-btn", () => {
         })
 })
 // delete button event listener
-$("#event-container").on("click", "delete-btn", () => {
+$("#event-container").on("click", ".delete-btn", () => {
     const eventID = $(event.target).parent().attr("id")
     eventDatabaseHandler.deleteEvent(eventID)
     .then(() => {
