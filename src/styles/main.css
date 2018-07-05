@@ -1,0 +1,19 @@
+/* 
+
+#taskForm-container {
+    border: black;
+    background: blue;
+    display: flex;
+    flex: column;
+}
+
+#taskContainer {
+    border: black;
+    background: blue;
+    display: flex;
+    flex: column;
+} */
+
+#whole-form {
+    display: flex;
+}
