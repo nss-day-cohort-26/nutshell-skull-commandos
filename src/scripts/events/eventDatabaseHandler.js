@@ -22,6 +22,20 @@ const eventDatabaseHandler = Object.create({}, {
                 method: "DELETE",
             })
         }
+    },
+
+    putEvent: {
+        value: (name, date,location,id) => {
+            return $.ajax({
+                url: `http://localhost:3000/events/${id}`,
+                method: "PUT",
+                data: {
+                    name: name,
+                    date: date,
+                    location: location
+                }
+            })
+        }
     }
 })
 module.exports = eventDatabaseHandler;
