@@ -3,6 +3,11 @@
 #whole-form {
     display: flex;
 }
+
+#form-container {
+    border: 10%, black;
+    padding: 10%;
+}
 /* 
 
 #taskForm-container {
