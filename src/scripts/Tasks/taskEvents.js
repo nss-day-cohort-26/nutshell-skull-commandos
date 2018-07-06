@@ -8,24 +8,37 @@ const userData = require("../users/usersEvents");
 $("#taskForm-container").on("click", "#submit-btn", () => {
     const taskNameInput = $("#taskName-input").val();
     const taskDetailsInput = $("#taskDetails-input").val();
+    const taskCompletionInput = $("#taskCompletion-input").val();
     const newTask = {
       name: taskNameInput,
       details: taskDetailsInput,
+      date: taskCompletionInput,
       userID: userData()
     }
     // console.log("this is the one", userData())
     taskDatabaseHandler.postTask(newTask)
     .then((taskInfo) => {
-      console.log("taskInfo",taskInfo)
+      // console.log("taskInfo",taskInfo)
       $("#taskName-input").val("").attr("placeholder", "Task Name")
       $("#taskDetails-input").val("").attr("placeholder", "Details")
-      // console.log("task name", $("#taskName-input"))
+      $("#taskCompletion-input").val("").attr("placeholder", "Expected Completion Date")
+      // console.log("task date", $("#taskCompletion-input"))
       return taskDatabaseHandler.getAllTasks()
     })
     .then(taskArray => {
       taskPrinter.printTasks(taskArray)
   })
 })
+
+  $("#taskContainer").on("click", ".edit-btn", () => {
+    const taskID = $(event.target).parent().attr("id")
+    taskDatabaseHandler.editTask(taskID)
+    // console.log("edit", taskID)
+    .then(() => {
+      // console.log("edit id", taskID)
+      return taskDatabaseHandler.editTask()
+    })
+  })
 
   //Event Handler for the task list - DELETE BUTTON
   $("#taskContainer").on("click", ".complete-btn", () => {
