@@ -8,11 +8,24 @@ const databaseHandler = Object.create({}, {
             })
         }
     },
+    getAllUsers: {
+        value: () => {
+            return $.ajax("http://localhost:3000/tasks")
+        }
+    },
     deleteUser: {
         value: (id) => {
             return $.ajax({
                 url: `http://localhost:3000/users/${id}`,
                 method: "DELETE",
+            })
+        }
+    },
+    getUserByName: {
+        value: (name) => {
+            console.log(name)
+            return $.ajax({
+                url: `http://localhost:3000/users?name=${name}`
             })
         }
     }
