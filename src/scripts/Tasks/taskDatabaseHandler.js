@@ -13,15 +13,25 @@ const taskDatabaseHandler = Object.create({}, {
             return $.ajax("http://localhost:3000/tasks")
         }
     },
-    editTask: {
-        value: (id, name, details, date) => {
+    getTask: {
+        value: (id) => {
             return $.ajax({
                 url: `http://localhost:3000/tasks/${id}`,
+                method: "GET"
+            })
+        }
+    },
+    putTask: {
+        value: (updateTask) => {
+            console.log("database", updateTask)
+            return $.ajax({
+                url: `http://localhost:3000/tasks/${updateTask.id}`,
                 method: "PUT",
                 data: {
-                    name: name,
-                    details: details,
-                    date: date
+                    name: updateTask.name,
+                    details: updateTask.details,
+                    date: updateTask.date,
+                    userID: updateTask.userID
                 }
             })
         }
