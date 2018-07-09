@@ -15,6 +15,30 @@
     background: rgb(255, 174, 0);
 }
 
+#wholefriend {
+    border: 5px solid black;
+    /* background: rgb(0, 255, 255); */
+    padding: 0% 5% 5% 5%;
+    display: block;
+    flex: column;
+}
+
+#friend-form {
+    padding: 5%;
+    width: 200px;
+    border-radius: 15px;
+    /* display: block; */
+    flex: column;
+    background: blue;
+}
+/* #container {
+    border: 5px solid black;
+    background: rgb(0, 255, 255);
+    padding: 0% 5% 5% 5%;
+    display: block;
+    flex: column;
+} */
+
 h1 {
     text-align: center;
     color: rgb(70, 67, 67);
