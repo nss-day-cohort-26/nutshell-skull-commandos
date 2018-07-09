@@ -36,7 +36,21 @@ $("#container").on("click", ".delete-btn", () => {
 })
 
 let getUserID = () => {
-    return userID
+    const ids =  sessionStorage.getItem("currentUserId")
+    return ids;
 }
+
+$("#form-container").on("click", "#signIn-btn", () => {
+    const logInInput = $("#logIn-input").val()
+    console.log(logInInput);
+    databaseHandler.getUserByName(logInInput)
+    .then(response => {
+        console.log(response)
+    if(!response[0]) {
+        console.log("Must Sign Up!")
+    }
+        sessionStorage.setItem("currentUserId", `${response[0].id}`)
+    })
+})
 
 module.exports = getUserID;
