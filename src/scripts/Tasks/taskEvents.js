@@ -3,7 +3,6 @@ const taskDatabaseHandler = require("./taskDatabaseHandler");
 const taskPrinter = require("./taskPrinter");
 const userData = require("../users/usersEvents");
 
-// console.log("userData", userData)
 
 //Event Handler for the task list - SUBMIT BUTTON
 $("#taskForm-container").on("click", "#submit-btn", () => {
@@ -19,7 +18,7 @@ $("#taskForm-container").on("click", "#submit-btn", () => {
     // console.log("this is the one", userData())
     taskDatabaseHandler.postTask(newTask)
     .then((taskInfo) => {
-      // console.log("taskInfo",taskInfo)
+      console.log("taskInfo",taskInfo)
       $("#taskName-input").val("").attr("placeholder", "Task Name")
       $("#taskDetails-input").val("").attr("placeholder", "Details")
       $("#taskCompletion-input").val("").attr("placeholder", "Expected Completion Date")
@@ -35,6 +34,7 @@ let updateTaskID;
 
 //Event Handler for the task list - EDIT BUTTON
   $("#taskContainer").on("click", ".edit-btn", () => {
+
     updateTaskID = $(event.target).parent().attr("id")
     taskDatabaseHandler.getTask(updateTaskID)
     // console.log("edit", updateTaskID)

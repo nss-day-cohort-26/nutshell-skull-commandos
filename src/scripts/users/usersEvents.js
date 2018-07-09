@@ -14,16 +14,43 @@ $("#form-container").on("click", "#submit-btn", () => {
     databaseHandler.postUser(newUser)
         .then((userInfo) => {
             userID = userInfo.id
+            $("#name-input").val("").attr("placeholder", "User Name")
             console.log(userInfo)
-            return DatabaseHandler.getAllUsers(userInfo.id)
+            return databaseHandler.getAllUsers(userInfo.id)
         })
         .then(userArray => {
             Printer.printUsers(userArray)
         })
 })
 
+
+$("#container").on("click", ".delete-btn", () => {
+    const userID = $(event.target).parent().attr("id")
+    databaseHandler.deleteTask(userID)
+        .then(() => {
+            return databaseHandler.getAllUsers()
+        })
+        .then((userArray) => {
+            userPrinter.printTasks(userArray)
+        })
+})
+
 let getUserID = () => {
-    return userID
+    const ids =  sessionStorage.getItem("currentUserId")
+    return ids;
 }
+
+$("#form-container").on("click", "#signIn-btn", () => {
+    const logInInput = $("#logIn-input").val()
+    console.log(logInInput);
+    databaseHandler.getUserByName(logInInput)
+    .then(response => {
+        console.log(response)
+    if(!response[0]) {
+        console.log("Must Sign Up!")
+    }
+        sessionStorage.setItem("currentUserId", `${response[0].id}`)
+    })
+})
 
 module.exports = getUserID;
