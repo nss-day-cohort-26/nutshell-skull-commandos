@@ -1,4 +1,5 @@
 const userDatabaseHandler = require("../users/databaseHandler")
+const friendDatabaseHandler = require("./friendsDatabaseHandler")
 
 const friendForm = Object.create({}, {
     buildForm: {
@@ -11,8 +12,19 @@ const friendForm = Object.create({}, {
             $("#addFriend-btn").click(function () {
                 const name = friendAdd.val()
                 console.log(friendAdd.val())
-                userDatabaseHandler.getUserByName(name).then(getUsers => {
-                    console.log(getUsers.id)
+                userDatabaseHandler.getUserByName(name).then(newFriend => {
+                    console.log(newFriend[0].id)
+                    const newFriends = Object.create({}, {
+                        User2ID: {
+                            value: newFriend[0].id,
+                            enumerable: true
+                        },
+                        User1ID: {
+                            value: 1,
+                            enumerable: true
+                        }
+                    })
+                    friendDatabaseHandler.MakeNewFriend(newFriends)
                 });
             })
         }
