@@ -17,6 +17,7 @@ $("#news-container").on("click", "#submit-butt", () => {
             $("#newsForm-input").val("")
             $("#url-input").val("")
             $("#synopsis-input").val("")
+            console.log(newsInfo)
             return newsData.getAllNews()
         })
         .then(newsArray => {
