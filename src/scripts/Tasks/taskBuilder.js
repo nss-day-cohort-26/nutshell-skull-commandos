@@ -10,6 +10,7 @@ const taskForm = Object.create({}, {
       $("<input>").attr("id", "taskCompletion-input").attr("placeholder", "Expected Completion Date").appendTo($formDiv);
       //Create "submit" button
       $("<button>").attr("id", "submit-btn").text("Add Task Here").appendTo($formDiv);
+      $("<button>").attr("id", "update-btn").text("Update Task").appendTo($formDiv);
       $formDiv.appendTo($("#taskForm-container"))
     }
   }
