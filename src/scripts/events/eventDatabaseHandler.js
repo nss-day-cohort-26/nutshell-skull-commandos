@@ -15,6 +15,14 @@ const eventDatabaseHandler = Object.create({}, {
         }
     },
 
+    getEvent: {
+        value: (id) => {
+            return $.ajax({
+                url: `http://localhost:3000/events/${id}`,
+                method: "GET",
+        })
+    }},
+
     deleteEvent: {
         value: (id) => {
             return $.ajax({
@@ -25,14 +33,16 @@ const eventDatabaseHandler = Object.create({}, {
     },
 
     putEvent: {
-        value: (name, date,location,id) => {
+        value: (updateEvent) => {
+            console.log("update event", updateEvent)
             return $.ajax({
-                url: `http://localhost:3000/events/${id}`,
+                url: `http://localhost:3000/events/${updateEvent.id}`,
                 method: "PUT",
                 data: {
-                    name: name,
-                    date: date,
-                    location: location
+                    name: updateEvent.name,
+                    date: updateEvent.date,
+                    location: updateEvent.location,
+                    userID: updateEvent.userID
                 }
             })
         }
