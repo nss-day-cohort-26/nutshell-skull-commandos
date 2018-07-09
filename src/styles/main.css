@@ -1,4 +1,4 @@
-/* 
+
 
 #taskForm-container {
     border: black;
@@ -12,7 +12,7 @@
     background: blue;
     display: flex;
     flex: column;
-} */
+}
 
 #whole-form {
     display: flex;
