@@ -2,7 +2,7 @@
 const taskDatabaseHandler = require("./taskDatabaseHandler");
 const taskPrinter = require("./taskPrinter");
 const userData = require("../users/usersEvents");
-// console.log("userData", userData)
+
 
 //Event Handler for the task list - SUBMIT BUTTON
 $("#taskForm-container").on("click", "#submit-btn", () => {
@@ -18,7 +18,7 @@ $("#taskForm-container").on("click", "#submit-btn", () => {
     // console.log("this is the one", userData())
     taskDatabaseHandler.postTask(newTask)
     .then((taskInfo) => {
-      // console.log("taskInfo",taskInfo)
+      console.log("taskInfo",taskInfo)
       $("#taskName-input").val("").attr("placeholder", "Task Name")
       $("#taskDetails-input").val("").attr("placeholder", "Details")
       $("#taskCompletion-input").val("").attr("placeholder", "Expected Completion Date")
@@ -30,13 +30,43 @@ $("#taskForm-container").on("click", "#submit-btn", () => {
   })
 })
 
+let updateTaskID;
+
+//Event Handler for the task list - EDIT BUTTON
   $("#taskContainer").on("click", ".edit-btn", () => {
-    const taskID = $(event.target).parent().attr("id")
-    taskDatabaseHandler.editTask(taskID)
-    // console.log("edit", taskID)
+
+    updateTaskID = $(event.target).parent().attr("id")
+    taskDatabaseHandler.getTask(updateTaskID)
+    // console.log("edit", updateTaskID)
+    .then((response) => {
+      console.log("response", response)
+      $("#taskName-input").val(response.name)
+      $("#taskDetails-input").val(response.details)
+      $("#taskCompletion-input").val(response.date)
+  })
+})
+
+  // console.log("looking for this", taskDatabaseHandler.putTask)
+
+  //Event Handler for the task list - UPDATE BUTTON
+  $("#taskForm-container").on("click", "#update-btn", () => {
+    // console.log("this is the update btn")
+    const taskNameInput = $("#taskName-input").val();
+    const taskDetailsInput = $("#taskDetails-input").val();
+    const taskCompletionInput = $("#taskCompletion-input").val();
+    const updateTask = {
+      id: updateTaskID,
+      name: taskNameInput,
+      details: taskDetailsInput,
+      date: taskCompletionInput,
+      userID: userData()
+    }
+    taskDatabaseHandler.putTask(updateTask)
     .then(() => {
-      // console.log("edit id", taskID)
-      return taskDatabaseHandler.editTask()
+      return taskDatabaseHandler.getAllTasks()
+    })
+    .then((taskArray) => {
+      taskPrinter.printTasks(taskArray)
     })
   })
 
