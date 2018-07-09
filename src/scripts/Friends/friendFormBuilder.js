@@ -1,5 +1,6 @@
 const userDatabaseHandler = require("../users/databaseHandler")
 const friendDatabaseHandler = require("./friendsDatabaseHandler")
+const userEvents = require("../users/usersEvents")
 
 const friendForm = Object.create({}, {
     buildForm: {
@@ -20,7 +21,7 @@ const friendForm = Object.create({}, {
                             enumerable: true
                         },
                         User1ID: {
-                            value: 1,
+                            value: logInInput,
                             enumerable: true
                         }
                     })
