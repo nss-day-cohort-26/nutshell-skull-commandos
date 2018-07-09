@@ -1,19 +1,140 @@
-/* 
 
-#taskForm-container {
-    border: black;
-    background: blue;
-    display: flex;
-    flex: column;
-}
-
-#taskContainer {
-    border: black;
-    background: blue;
-    display: flex;
-    flex: column;
-} */
 
 #whole-form {
     display: flex;
+}
+
+#name-input {
+    width: 200px;
+    height: 25px;
+}
+
+#form-container {
+    border: 5px solid black;
+    padding: 5%;
+    background: rgb(255, 174, 0);
+}
+
+h1 {
+    text-align: center;
+    color: rgb(70, 67, 67);
+    /* text-shadow: 2px 2px orange; */
+    /* border: 2px solid black; */
+}
+
+#tasks-column {
+    border: 5px solid black;
+    /* background: rgb(0, 255, 255); */
+    padding: 0% 5% 5% 5%;
+    display: block;
+    flex: column;
+}
+
+#taskForm-container {
+    padding: 5%;
+    width: 200px;
+    border-radius: 15px;
+    /* display: block; */
+    flex: column;
+    background: blue;
+}
+
+#taskContainer {
+    padding: 5%;
+    display: block;
+    flex: column;
+}
+
+#taskName-input {
+    width: 200px;
+    height: 25px;
+}
+
+#taskDetails-input {
+    width: 200px;
+    height: 25px;
+}
+
+#taskCompletion-input {
+    width: 200px;
+    height: 25px;
+    margin: 0px 0px 5px 0px;
+}
+
+#events-column {
+    border: 5px solid black;
+    /* background: rgb(0, 255, 255); */
+    padding: 0% 5% 5% 5%;
+    display: block;
+    flex: column;
+}
+
+#eventForm-container {
+    padding: 5%;
+    width: 200px;
+    border-radius: 15px;
+    /* display: block; */
+    flex: column;
+    background: blue;
+}
+
+#event-container {
+    padding: 5%;
+    display: block;
+    flex: column;
+}
+
+#eventName-input {
+    width: 200px;
+    height: 25px;
+}
+
+#eventDate-input {
+    width: 200px;
+    height: 25px;
+}
+
+#eventLocation-input {
+    width: 200px;
+    height: 25px;
+    margin: 0px 0px 5px 0px;
+}
+
+#news-column {
+    border: 5px solid black;
+    /* background: rgb(0, 255, 255); */
+    padding: 0% 5% 5% 5%;
+    display: block;
+    flex: column;
+}
+
+#news-container {
+    padding: 5%;
+    width: 200px;
+    border-radius: 15px;
+    /* display: block; */
+    flex: column;
+    background: blue;
+}
+
+#newsBox {
+    padding: 5%;
+    display: block;
+    flex: column;
+}
+
+#newsForm-input {
+    width: 200px;
+    height: 25px;
+}
+
+#url-input {
+    width: 200px;
+    height: 25px;
+}
+
+#synopsis-input {
+    width: 200px;
+    height: 25px;
+    margin: 0px 0px 5px 0px;
 }
