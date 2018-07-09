@@ -2,6 +2,7 @@ const eventDatabaseHandler = require("./eventDatabaseHandler");
 const eventsPrinter = require("./eventPrinter");
 const userData = require("../users/usersEvents");
 
+// submit button event handler
 $("#eventForm-container").on("click", "#submit-btn", () => {
     const eventNameInput = $("#eventName-input").val();
     const eventDateInput = $("#eventDate-input").val();
@@ -25,6 +26,8 @@ $("#eventForm-container").on("click", "#submit-btn", () => {
             eventsPrinter.printEvents(eventArray)
         })
 })
+let updateEventID;
+
 $("#eventForm-container").on("click", "#update-btn", () => {
     const eventNameInput = $("#eventName-input").val();
     const eventDateInput = $("#eventDate-input").val();
@@ -59,7 +62,6 @@ $("#event-container").on("click", ".delete-btn", () => {
             eventsPrinter.printEvents(eventArray)
         })
 })
-let updateEventID;
 // edit button event listener
 $("#event-container").on("click", ".edit-btn", () => {
     updateEventID = $(event.target).parent().attr("id")
