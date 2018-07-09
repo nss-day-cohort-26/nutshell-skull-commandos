@@ -1,9 +1,7 @@
-const formBuilder = require("./userBuilder")
-const printer = require("./userPrinter");
+const userData = require("../users/usersEvents");
+const friends = require("./friendFormBuilder");
 
-
-
-formBuilder.buildForm()
+friends.buildForm()
 
 const printOnPageLoad = () => {
     $.ajax("http://localhost:3000/users")
